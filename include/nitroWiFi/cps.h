@@ -119,7 +119,7 @@ typedef struct {
 
 #define CPS_DONOTUSE_DHCP 0x0001
 
-#if defined(BIG_ENDIAN)
+#if defined(BIG_ENDIAN) && !defined(SDK_X86) && !defined(SDK_AARCH64)
     #define CPS_htons(data) (data)
     #define CPS_htonl(data) (data)
 #else

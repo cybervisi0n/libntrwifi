@@ -1,3 +1,5 @@
 .cache/
 subprojects/.wraplock
 subprojects/NitroSDK/
+.fontconfig_cache/
+subprojects/libntr/

@@ -1,7 +1,7 @@
 project('NitroWiFi', 'c',
     default_options: {
         'default_library': 'static',
-        'prefer_static':    true
+        'prefer_static':    false
     },
     meson_version: '>=1.2.0',
     version: '2.1.30003'
@@ -125,3 +125,7 @@ nitrowifi_dep = declare_dependency(
 )
 
 meson.override_dependency('NitroWiFi', nitrowifi_dep)
+
+if(get_option('standalone') == true)
+    subdir('standalone')
+endif

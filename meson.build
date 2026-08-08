@@ -1,4 +1,4 @@
-project('NitroWiFi', 'c',
+project('libntrwifi', 'c',
     default_options: {
         'default_library': 'static',
         'prefer_static':    false

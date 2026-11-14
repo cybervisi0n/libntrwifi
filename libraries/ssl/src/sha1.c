@@ -55,7 +55,7 @@ const union {
 
 /* Hash a single 512-bit block. This is the core of the algorithm. */
 
-#ifdef SDK_BUILD_NX
+#if defined(SDK_BUILD_NX) || defined(SDK_BUILD_OUNCE)
 #define SHA1Transform nitrowifi_SHA1Transform
 #endif
 void SHA1Transform(

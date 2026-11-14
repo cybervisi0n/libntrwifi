@@ -5,7 +5,7 @@
 #ifdef SDK_BUILD_WIN64
 #include <winsock2.h>
 #endif
-#if defined(SDK_BUILD_LINUX) || defined(SDK_BUILD_NX) || defined(SDK_BUILD_PROSPERO)
+#if defined(SDK_BUILD_LINUX) || defined(SDK_BUILD_NX) || defined(SDK_BUILD_OUNCE) || defined(SDK_BUILD_PROSPERO)
 #include <errno.h>
 #include <sys/socket.h>
 #include <sys/select.h>
@@ -2713,7 +2713,7 @@ static void send_udp(void * aBuf,int aLen,CPSSoc * aSoc)
 
   struct sockaddr_in server;
   server.sin_family = AF_INET;
-  #ifndef SDK_BUILD_NX
+  #if !defined(SDK_BUILD_NX) && !defined(SDK_BUILD_OUNCE)
   server.sin_port = htons(aSoc->remote_port_bound);
   #endif
   #ifdef SDK_BUILD_WIN64
@@ -3361,7 +3361,7 @@ void CPS_SocBind(u16 local_port, u16 remote_port, CPSInAddr remote_ip)
     remote.sin_addr.s_addr = INADDR_ANY;
     #endif
     remote.sin_family = AF_INET;
-    #ifndef SDK_BUILD_NX
+    #if !defined(SDK_BUILD_NX) && !defined(SDK_BUILD_OUNCE)
     if(local_port == 0) {
       remote.sin_port = htons(uVar1);
     } else {
